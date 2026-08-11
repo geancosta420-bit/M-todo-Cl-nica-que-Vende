@@ -12,7 +12,7 @@ body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSy
 a{text-decoration:none;color:inherit}.container{width:min(1120px,92%);margin:auto}
 nav{position:sticky;top:0;z-index:50;background:rgba(252,249,247,.92);backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
 .nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.07em;font-size:11px}.brand i{font-style:normal;color:var(--roseDark)}
-.nav a:last-child{font-size:12px;font-weight:800;color:#fff;background:var(--ink);padding:11px 17px;border-radius:99px}
+.navlinks{display:flex;align-items:center;gap:20px}.navlinks>a{font-size:11px;font-weight:750;color:var(--muted)}.navlinks .navbuy{color:#fff;background:var(--ink);padding:11px 17px;border-radius:99px}.navlinks>a:hover{color:var(--roseDark)}
 .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:17px 26px;font-weight:850;font-size:14px;transition:.2s;border:0;cursor:pointer}
 .btn-main{background:var(--ink);color:#fff;box-shadow:0 15px 35px rgba(36,31,29,.2)}.btn-main:hover{transform:translateY(-2px)}
 .btn-light{background:#fff;border:1px solid var(--line)}
@@ -36,7 +36,8 @@ h1 em{font-style:normal;color:var(--roseDark)}
 .trust{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0}
 .trustline{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;color:var(--muted);font-size:11px;font-weight:700}
 .trustline span:before{content:"✓";color:var(--green);margin-right:6px}
-.section{padding:92px 0}.alt{background:#fff}.center{text-align:center}
+.productline{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.productcard{background:#fff;border:1px solid var(--line);border-radius:23px;padding:28px;min-height:270px;display:flex;flex-direction:column}.productcard.featured{background:var(--blush);border-color:#e5cbc5}.producttag{font-size:9px;font-weight:900;letter-spacing:.15em;color:var(--gold);margin-bottom:12px}.productcard h3{font-size:23px;line-height:1.08;letter-spacing:-.035em;margin:0 0 10px}.productcard p{font-size:14px;color:var(--muted);margin:0 0 18px}.productprice{font-size:29px;font-weight:900;letter-spacing:-.04em;margin-top:auto;margin-bottom:12px}.productcard .btn{font-size:11px;padding:13px 17px}.coming{font-size:9px;font-weight:850;color:var(--roseDark);padding-top:12px;border-top:1px solid var(--line)}.productnote{margin-top:17px;padding:19px 22px;border:1px solid var(--line);border-radius:17px;background:var(--cream);font-size:13px;color:var(--muted)}
+ .section{padding:92px 0}.alt{background:#fff}.center{text-align:center}
 .eyebrow{font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 h2{font-size:clamp(31px,4vw,50px);line-height:1.03;letter-spacing:-.045em;margin:0 0 14px}.lead{color:var(--muted);font-size:17px;max-width:720px}
 .head{max-width:760px;margin-bottom:43px}
@@ -56,11 +57,38 @@ h2{font-size:clamp(31px,4vw,50px);line-height:1.03;letter-spacing:-.045em;margin
 .faq{max-width:820px;margin:auto}details{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px 20px;margin:9px 0}summary{cursor:pointer;font-weight:800}details p{color:var(--muted);font-size:14px;margin:12px 0 0}
 .final{padding:92px 0;background:var(--ink);color:#fff;text-align:center}.final h2{color:#fff;max-width:800px;margin-left:auto;margin-right:auto}.final p{color:#d4cbc8;max-width:650px;margin:0 auto 27px}.final .btn-main{background:#fff;color:var(--ink)}
 footer{background:#1c1917;color:#a9a09d;text-align:center;padding:25px;font-size:10px}
-@media(max-width:820px){.grid,.machineGrid,.offer,.math{grid-template-columns:1fr;gap:38px}.cards{grid-template-columns:1fr}.features{grid-template-columns:1fr}.offer,.machine{padding:30px}.hero{padding-top:55px}.book{width:280px;height:390px}.trustline{gap:14px}.nav a:last-child{padding:10px 13px;font-size:10px}.offer+div div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}}
+@media(max-width:820px){.navlinks>a:not(.navbuy){display:none}.productline{grid-template-columns:1fr}.grid,.machineGrid,.offer,.math{grid-template-columns:1fr;gap:38px}.cards{grid-template-columns:1fr}.features{grid-template-columns:1fr}.offer,.machine{padding:30px}.hero{padding-top:55px}.book{width:280px;height:390px}.trustline{gap:14px}.nav a:last-child{padding:10px 13px;font-size:10px}.offer+div div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important}}
+
+.nav-products{display:flex;align-items:center;gap:6px;margin-left:auto;margin-right:14px}
+.nav-products a{font-size:11px;font-weight:800;padding:9px 11px;border-radius:999px;color:var(--muted)}
+.nav-products a:hover{background:var(--blush);color:var(--roseDark)}
+.nav-buy{font-size:11px;font-weight:850;color:#fff!important;background:var(--ink);padding:11px 15px;border-radius:99px}
+.product-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.product-tab{border:1px solid var(--line);background:#fff;border-radius:24px;padding:27px;display:flex;flex-direction:column;min-height:310px}
+.product-tab.featured{background:var(--blush);border-color:var(--blush2)}
+.product-tag{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:900}
+.product-tab h3{font-size:25px;line-height:1.02;letter-spacing:-.04em;margin:13px 0 9px}
+.product-tab p{font-size:13px;color:var(--muted);margin:0 0 15px}
+.product-tab ul{padding:0;margin:0 0 20px;list-style:none;color:var(--muted);font-size:12px}
+.product-tab li{margin:7px 0}.product-tab li:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}
+.product-price{font-size:26px;font-weight:900;letter-spacing:-.04em;margin-top:auto;margin-bottom:12px}
+.product-tab .btn{width:100%}
+.product-note{font-size:10px;color:var(--muted);text-align:center;margin-top:8px}
+@media(max-width:820px){.nav-products{display:none}.product-tabs{grid-template-columns:1fr}.nav-buy{padding:10px 12px;font-size:10px}}
 </style>
 </head>
 <body>
-<nav><div class="container nav"><a class="brand" href="#top">MÉTODO <i>CLÍNICA QUE VENDE</i></a><a href="#comprar">QUERO O MÉTODO →</a></div></nav>
+<nav>
+<div class="container nav">
+  <a class="brand" href="#top">MÉTODO <i>CLÍNICA QUE VENDE</i></a>
+  <div class="nav-products">
+    <a href="#produto-metodo">Método</a>
+    <a href="https://pay.kiwify.com.br/QaZuVxS">Scripts</a>
+    <a href="https://pay.kiwify.com.br/M48oydh">Reativação</a>
+  </div>
+  <a class="nav-buy" href="https://pay.kiwify.com.br/iFxL5f2" target="_blank" rel="noopener">COMEÇAR POR R$29,90 →</a>
+</div>
+</nav>
 
 <section class="hero" id="top">
 <div class="container grid">
@@ -192,6 +220,44 @@ footer{background:#1c1917;color:#a9a09d;text-align:center;padding:25px;font-size
 </div>
 </section>
 
+
+
+
+<section class="section" id="produtos">
+<div class="container">
+  <div class="head center">
+    <div class="eyebrow">Linha Clínica que Vende</div>
+    <h2>Escolha o próximo passo da sua clínica.</h2>
+    <p class="lead" style="margin:auto">Soluções independentes para aquisição, atendimento e reativação — compre apenas o que sua clínica precisa agora.</p>
+  </div>
+  <div class="product-tabs">
+    <article class="product-tab featured" id="produto-metodo">
+      <div class="product-tag">Produto principal</div>
+      <h3>Método Clínica que Vende</h3>
+      <p>O mapa completo para atrair, converter e reativar clientes usando Instagram, WhatsApp e um processo comercial organizado.</p>
+      <ul><li>WhatsApp e conversão</li><li>Follow-up e reativação</li><li>Instagram e tráfego pago</li><li>Plano de ação de 30 dias</li></ul>
+      <div class="product-price">R$ 29,90</div>
+      <a class="btn btn-main" href="https://pay.kiwify.com.br/iFxL5f2" target="_blank" rel="noopener">QUERO O MÉTODO →</a>
+    </article>
+    <article class="product-tab" id="produto-scripts">
+      <div class="product-tag">Complemento prático</div>
+      <h3>Kit de Scripts de WhatsApp</h3>
+      <p>Mensagens prontas para novos leads, preço, objeções, follow-up, recuperação de conversas, agendamento e reativação.</p>
+      <ul><li>Scripts por situação</li><li>Follow-up</li><li>Objeções e preço</li><li>Agendamento e pós-venda</li></ul>
+      <div class="product-price">R$ 14,90</div>
+      <a class="btn btn-main" href="https://pay.kiwify.com.br/QaZuVxS" target="_blank" rel="noopener">QUERO OS SCRIPTS →</a>
+    </article>
+    <article class="product-tab" id="produto-reativacao">
+      <div class="product-tag">Próximo nível</div>
+      <h3>Máquina de Reativação</h3>
+      <p>Como organizar a base de clientes, segmentar contatos e criar campanhas para gerar novas oportunidades de retorno.</p>
+      <ul><li>Segmentação da base</li><li>Campanhas de retorno</li><li>Scripts de reativação</li><li>Calendário de 30 dias</li></ul>
+      <div class="product-price">R$ 47–67</div>
+      <a class="btn btn-main" href="https://pay.kiwify.com.br/M48oydh" target="_blank" rel="noopener">QUERO REATIVAR →</a>
+    </article>
+  </div>
+</div>
+</section>
 <section class="section alt">
 <div class="container faq">
 <div class="head center"><div class="eyebrow">Antes de decidir</div><h2>Perguntas frequentes</h2></div>
@@ -213,5 +279,11 @@ footer{background:#1c1917;color:#a9a09d;text-align:center;padding:25px;font-size
 </section>
 <footer>© 2026 Método Clínica que Vende • Material educacional. Estratégias devem ser adaptadas à realidade e às normas aplicáveis de cada clínica.</footer>
 
-
+<script>
+function checkout(){
+  const CHECKOUT_URL = "#"; // COLOQUE AQUI O LINK DA KIWIFY/HOTMART/OUTRA PLATAFORMA
+  if(CHECKOUT_URL === "#"){alert("Configure o link do seu checkout no código do site antes de publicar.");return false;}
+  window.location.href=CHECKOUT_URL;return false;
+}
+</script>
 </body></html>
